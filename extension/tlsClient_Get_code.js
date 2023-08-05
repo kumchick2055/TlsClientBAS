@@ -1,12 +1,13 @@
-<%= variable %> = native("tls_client", "RequestBas", JSON.stringify({
+native_async("tls_client", "RequestBas", JSON.stringify({
         "tlsClientIdentifier": "chrome_103",
-        "followRedirects": false,
+        "followRedirects": (<%= Redirect %>),
         "insecureSkipVerify": false,
         "withoutCookieJar": false,
         "withDefaultCookieJar": false,
         "forceHttp1": false,
         "withDebug": false,
         "withRandomTLSExtensionOrder": false,
+		"sessionId": "test-session-id",
         "isByteResponse": false,
         "isByteRequest": false,
         "catchPanics": false,
@@ -29,8 +30,16 @@
             "accept-encoding",
             "accept-language"
         ],
-        "requestUrl": "https://eonk4gg5hquk0g6.m.pipedream.net",
-        "requestMethod": "POST",
-        "requestBody": "foo=bar&baz=foo",
-        "requestCookies": []
-    }));
+        "requestUrl": (<%= Value %>),
+        "requestMethod": "GET",
+    }))!
+
+		parsedResponse = JSON.parse(_result());
+
+if(parsedResponse["status"] < 200){
+	fail("[TLS Client] Error: " + parsedResponse["body"]);
+} else {
+	<%= variable %> = parsedResponse["body"];
+}
+
+<%= variable_id_session %> = parsedResponse["id"];

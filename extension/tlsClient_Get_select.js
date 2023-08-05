@@ -29,6 +29,13 @@ if(Save.length == 0){
 	return;
 }
 
+var IdSession = this.$el.find("#IdSession").val().toUpperCase();
+
+if(IdSession.length == 0){
+	Invalid("Session is empty");
+	return;
+}
+
 try {
     var code = loader.GetAdditionalData() + _.template($("#tlsClient_Get_code").html())({
         Value: Value["updated"],
@@ -38,8 +45,9 @@ try {
 		Timeout: Timeout["updated"],
 		MaximumFailes: MaximumFailes["updated"],
 		ClientIdentifier: ClientIdentifier["updated"],
-		variable: "VAR_" + Save
+		variable: "VAR_" + Save,
+		variable_id_session: "VAR_" + IdSession 
     })
 	code = Normalize(code, 0);
 	BrowserAutomationStudio_Append("", BrowserAutomationStudio_SaveControls() + code, action, DisableIfAdd);
-}catch(e){}
+}catch(e){Invalid(e);}

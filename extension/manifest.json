@@ -3,6 +3,23 @@
 		{
 			"code": [
 				{
+					"file": "tlsClient_SaveCookies_code.js",
+					"name": "tlsClient_SaveCookies_code"
+				}
+			],
+			"description": {
+				"en": "Save Cookies",
+				"ru": "Сохранить Куки"
+			},
+			"interface": "tlsClient_SaveCookies_interface.js",
+			"is_element": false,
+			"name": "tlsClient_SaveCookies",
+			"select": "tlsClient_SaveCookies_select.js",
+			"template": "{{Save}}"
+		},
+		{
+			"code": [
+				{
 					"file": "tlsClient_Get_code.js",
 					"name": "tlsClient_Get_code"
 				}
@@ -16,6 +33,23 @@
 			"name": "tlsClient_Get",
 			"select": "tlsClient_Get_select.js",
 			"template": "{{Value}}"
+		},
+		{
+			"code": [
+				{
+					"file": "tlsClient_Reset_code.js",
+					"name": "tlsClient_Reset_code"
+				}
+			],
+			"description": {
+				"en": "Сброс",
+				"ru": "Сброс"
+			},
+			"interface": "tlsClient_Reset_interface.js",
+			"is_element": false,
+			"name": "tlsClient_Reset",
+			"select": "tlsClient_Reset_select.js",
+			"template": ""
 		}
 	],
 	"api_version": 1,
@@ -40,7 +74,12 @@
 		"ru": "Http Client с поддержкой подмены JA3 Отпечатка"
 	},
 	"languages": [],
-	"localize": {},
+	"localize": {
+		"Variable to save response": {"ru": "Переменная, в которую сохранить результат"},
+		"Save Id Session": {"ru": "Сохранить Ид сессии"},
+		"Variable to save Id session": {"ru": "Переменная, в которую сохранить Ид сессии"},
+		"Id Session": {"ru": "Ид сессии"}
+	},
 	"major_version": 1,
 	"minor_version": 0,
 	"modules": [],
@@ -57,9 +96,21 @@
 			"exportlist": [
 				{
 					"name": "RequestBas",
-					"isasync": false,
+					"isasync": true,
 					"waitinfinite": false,
 					"workfunction": "RequestBas"
+				},
+				{
+					"name": "GetCookies",
+					"isasync": false,
+					"waitinfinite": false,
+					"workfunction": "GetCookies"
+				},
+				{
+					"name": "ClearSession",
+					"isasync": false,
+					"waitinfinite": false,
+					"workfunction": "ClearSession"
 				}
 			]
 		}
