@@ -7,8 +7,7 @@ native_async("tls_client", "RequestBas", JSON.stringify({
         "forceHttp1": false,
         "withDebug": false,
         "withRandomTLSExtensionOrder": false,
-		"sessionId": "test-session-id",
-        "isByteResponse": false,
+        "isByteResponse": (<%= isByteResponse %>),
         "isByteRequest": false,
         "catchPanics": false,
         "timeoutSeconds": 30,
@@ -32,14 +31,10 @@ native_async("tls_client", "RequestBas", JSON.stringify({
         ],
         "requestUrl": (<%= Value %>),
         "requestMethod": "GET",
-    }))!
+}))!
 
-		parsedResponse = JSON.parse(_result());
+parsedResponse = JSON.parse(_result());
 
 if(parsedResponse["status"] < 200){
 	fail("[TLS Client] Error: " + parsedResponse["body"]);
-} else {
-	<%= variable %> = parsedResponse["body"];
 }
-
-<%= variable_id_session %> = parsedResponse["id"];

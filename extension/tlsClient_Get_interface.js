@@ -7,9 +7,9 @@
 	<%= _.template($('#input_constructor').html())({id:"ClientIdentifier", description:tr("ClientIdentifier"), default_selector: "string", disable_int:true, value_string: "chrome_112", variants:["chrome_103","chrome_104", "chrome_105", "chrome_106", "chrome_107", "chrome_108", "chrome_109", "chrome_110", "chrome_111", "chrome_112"], size:2, help: {description: tr("Client Identifier")}}) %>
 <div data-preserve="true" data-preserve-type="check" data-preserve-id="Check">
 	<input type="checkbox" id="Check" checked="checked"/> <label for="Check" class="tr">Follow redirects</label>
+		<input type="checkbox" id="isByteResponse"/> <label for="isByteResponse" class="tr">Is byte response</label>
 	</div>
-	<%= _.template($('#variable_constructor').html())({id:"Save", description:tr("Variable to save response"), default_variable: "RESPONSE"}) %>
-	<%= _.template($('#variable_constructor').html())({id:"IdSession", description:tr("Variable to save Id session"), default_variable: "ID_SESSION"}) %>
 </div>
+
 
 <%= _.template($('#back').html())({action:"executeandadd", visible:true, wiki:"how_to_make_get_request"}) %>

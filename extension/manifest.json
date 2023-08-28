@@ -18,6 +18,23 @@
 			"template": "{{Save}}"
 		},
 		{
+            "code": [
+                {
+                    "file": "tlsClient_Content_code.js",
+                    "name": "tlsClient_Content_code"
+                }
+            ],
+            "description": {
+                "en": "Content",
+                "ru": "Содержание ответа"
+            },
+            "interface": "tlsClient_Content_interface.js",
+            "is_element": false,
+            "name": "tlsClient_Content",
+            "select": "tlsClient_Content_select.js",
+            "template": "{{Save}}"
+        },
+		{
 			"code": [
 				{
 					"file": "tlsClient_Get_code.js",
@@ -32,6 +49,23 @@
 			"is_element": false,
 			"name": "tlsClient_Get",
 			"select": "tlsClient_Get_select.js",
+			"template": "{{Value}}"
+		},
+		{
+			"code": [
+				{
+					"file": "tlsClient_Post_code.js",
+					"name": "tlsClient_Post_code"
+				}
+			],
+			"description": {
+				"en": "POST Request",
+				"ru": "POST Запрос"
+			},
+			"interface": "tlsClient_Post_interface.js",
+			"is_element": false,
+			"name": "tlsClient_Post",
+			"select": "tlsClient_Post_select.js",
 			"template": "{{Value}}"
 		},
 		{
@@ -78,7 +112,8 @@
 		"Variable to save response": {"ru": "Переменная, в которую сохранить результат"},
 		"Save Id Session": {"ru": "Сохранить Ид сессии"},
 		"Variable to save Id session": {"ru": "Переменная, в которую сохранить Ид сессии"},
-		"Id Session": {"ru": "Ид сессии"}
+		"Id Session": {"ru": "Ид сессии"},
+		"Is byte response": {"ru": "Сохранить в base64 формате"}
 	},
 	"major_version": 1,
 	"minor_version": 0,
@@ -111,6 +146,12 @@
 					"isasync": false,
 					"waitinfinite": false,
 					"workfunction": "ClearSession"
+				},
+				{
+					"name": "GetResponse",
+					"isasync": false,
+					"waitinfinite": false,
+					"workfunction": "GetResponse"
 				}
 			]
 		}

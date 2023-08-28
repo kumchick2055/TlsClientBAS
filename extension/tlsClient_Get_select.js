@@ -11,6 +11,8 @@ if(Method["original"].length <= 0){
 };
 
 var Redirect = $("#Check").is(':checked');
+var isByteResponse = $("#isByteResponse").is(":checked");
+
 var Timeout = GetInputConstructorValue("Timeout", loader);
 if(Timeout["original"].length == 0){
 	Invalid(tr("Timeout") + " " + tr("is empty"));
@@ -22,19 +24,6 @@ if(MaximumFailes["original"].length == 0){
     return;
 };
 var ClientIdentifier = GetInputConstructorValue("ClientIdentifier", loader);
-var Save = this.$el.find("#Save").val().toUpperCase();
-
-if(Save.length == 0){
-	Invalid("Save is empty");
-	return;
-}
-
-var IdSession = this.$el.find("#IdSession").val().toUpperCase();
-
-if(IdSession.length == 0){
-	Invalid("Session is empty");
-	return;
-}
 
 try {
     var code = loader.GetAdditionalData() + _.template($("#tlsClient_Get_code").html())({
@@ -42,11 +31,10 @@ try {
 		Headers: Headers["updated"],
 		Method: Method["updated"],
 		Redirect: Redirect,
+		isByteResponse: isByteResponse,
 		Timeout: Timeout["updated"],
 		MaximumFailes: MaximumFailes["updated"],
 		ClientIdentifier: ClientIdentifier["updated"],
-		variable: "VAR_" + Save,
-		variable_id_session: "VAR_" + IdSession 
     })
 	code = Normalize(code, 0);
 	BrowserAutomationStudio_Append("", BrowserAutomationStudio_SaveControls() + code, action, DisableIfAdd);

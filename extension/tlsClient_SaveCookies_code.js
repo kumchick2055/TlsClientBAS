@@ -1,5 +1,4 @@
 response = native("tls_client", "GetCookies", JSON.stringify({
-	"sessionId": "test-session-id",
 	"url": (<%= Url %>)
 }));
 

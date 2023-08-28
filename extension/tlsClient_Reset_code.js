@@ -1,1 +1,1 @@
-native("tls_client", "ClearSession", "{\"sessionId\": \"\"}");
+native("tls_client", "ClearSession", "");
